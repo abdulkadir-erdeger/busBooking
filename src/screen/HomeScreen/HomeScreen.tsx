@@ -42,13 +42,13 @@ const HomeScreen = () => {
     "Aralık",
   ];
   const days = [
+    "Pazar",
     "Pazartesi",
     "Salı",
     "Çarşamba",
     "Perşembe",
     "Cuma",
     "Cumartesi",
-    "Pazar",
   ];
 
   function info() {
@@ -56,7 +56,7 @@ const HomeScreen = () => {
       biletTürü: checked,
       kalkıs: departureCity,
       varis: destinationCity,
-      haftaninGunu: days[date.getDay() - 1],
+      haftaninGunu: days[date.getDay()],
       gun: date.getDate(),
       ay: months[date.getMonth()],
       yasDurum: maturityStatus,
