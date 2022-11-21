@@ -4,40 +4,57 @@ import {
   FlatList,
   TouchableOpacity,
   Pressable,
+  Modal,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./SeatSelectionScreen.style";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
+const data = [
+  {
+    row1: [
+      { id: "1", empty: true, selected: false, gender: "" },
+      { id: "4", empty: false, selected: true, gender: "woman" },
+      { id: "7", empty: true, selected: false, gender: "" },
+      { id: "10", empty: true, selected: false, gender: "" },
+      { id: "13", empty: true, selected: false, gender: "" },
+      { id: "16", empty: true, selected: false, gender: "" },
+      { id: "19", empty: true, selected: false, gender: "" },
+    ],
+    row2: [
+      { id: "2", empty: false, selected: true, gender: "man" },
+      { id: "3", empty: false, selected: true, gender: "woman" },
+      { id: "5", empty: true, selected: false, gender: "" },
+      { id: "6", empty: true, selected: false, gender: "" },
+      { id: "8", empty: true, selected: false, gender: "" },
+      { id: "9", empty: true, selected: false, gender: "" },
+      { id: "11", empty: true, selected: false, gender: "" },
+      { id: "12", empty: false, selected: true, gender: "man" },
+      { id: "14", empty: true, selected: false, gender: "" },
+      { id: "15", empty: true, selected: false, gender: "" },
+      { id: "17", empty: true, selected: false, gender: "" },
+      { id: "18", empty: true, selected: false, gender: "" },
+      { id: "20", empty: true, selected: false, gender: "" },
+      { id: "21", empty: true, selected: false, gender: "" },
+    ],
+  },
+];
+
 const SeatSelectionScreen = () => {
-  const [row1, setRow1] = useState([
-    { id: "1", empty: true, selected: false, gender: "" },
-    { id: "4", empty: false, selected: true, gender: "woman" },
-    { id: "7", empty: true, selected: false, gender: "" },
-    { id: "10", empty: true, selected: false, gender: "" },
-    { id: "13", empty: true, selected: false, gender: "" },
-    { id: "16", empty: true, selected: false, gender: "" },
-    { id: "19", empty: true, selected: false, gender: "" },
-  ]);
-  const [row2, setRow2] = useState([
-    { id: "2", empty: false, selected: true, gender: "man" },
-    { id: "3", empty: false, selected: true, gender: "woman" },
-    { id: "5", empty: true, selected: false, gender: "" },
-    { id: "6", empty: true, selected: false, gender: "" },
-    { id: "8", empty: true, selected: false, gender: "" },
-    { id: "9", empty: true, selected: false, gender: "" },
-    { id: "11", empty: true, selected: false, gender: "" },
-    { id: "12", empty: false, selected: true, gender: "man" },
-    { id: "14", empty: true, selected: false, gender: "" },
-    { id: "15", empty: true, selected: false, gender: "" },
-    { id: "17", empty: true, selected: false, gender: "" },
-    { id: "18", empty: true, selected: false, gender: "" },
-    { id: "20", empty: true, selected: false, gender: "" },
-    { id: "21", empty: true, selected: false, gender: "" },
-  ]);
-  const Seat = ({ item }: any) => {
+  const [row, setRow] = useState<any>(data);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectItem, setSelectItem] = useState<any>("");
+  const [selectSource, setSelectSource] = useState<any>("");
+  const Seat = ({ item, source }: any) => {
     return (
-      <TouchableOpacity disabled={item.selected}>
+      <TouchableOpacity
+        onPress={() => {
+          setSelectItem(item),
+            setSelectSource(source),
+            item.selected ? seatSelect("") : setModalVisible(true);
+        }}
+        disabled={!item.empty}
+      >
         <View
           style={{
             width: 60,
@@ -92,6 +109,25 @@ const SeatSelectionScreen = () => {
       </TouchableOpacity>
     );
   };
+
+  const seatSelect = (x: string) => {
+    if (selectSource) {
+      let data = row[0][selectSource];
+      const i = data.findIndex((item: any) => {
+        return item.id === selectItem.id;
+      });
+
+      if (selectItem.selected === false) {
+        data[i].gender = x;
+        data[i].selected = true;
+      } else {
+        data[i].gender = x;
+        data[i].selected = false;
+      }
+      setRow((oldArray: any) => [...oldArray, data]);
+    }
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flex: 1, alignItems: "center" }}>
@@ -118,15 +154,17 @@ const SeatSelectionScreen = () => {
             }}
           >
             <FlatList
-              data={row1}
-              renderItem={({ item }) => <Seat item={item} />}
+              data={row[0].row1}
+              renderItem={({ item }) => <Seat source={"row1"} item={item} />}
               keyExtractor={(item) => item.id}
               scrollEnabled={false}
               numColumns={1}
+              style={{ width: 0 }}
             />
+            <View style={{ flex: 1 }} />
             <FlatList
-              data={row2}
-              renderItem={({ item }) => <Seat item={item} />}
+              data={row[0].row2}
+              renderItem={({ item }) => <Seat source={"row2"} item={item} />}
               keyExtractor={(item) => item.id}
               numColumns={2}
               scrollEnabled={false}
@@ -134,6 +172,73 @@ const SeatSelectionScreen = () => {
             />
           </View>
         </View>
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <View
+            style={{
+              flex: 1,
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "black",
+              opacity: 0.8,
+            }}
+          >
+            <View
+              style={{
+                alignItems: "center",
+                padding: 15,
+                height: 150,
+                width: 250,
+                backgroundColor: "white",
+                borderRadius: 8,
+              }}
+            >
+              <Text style={{ fontSize: 18, fontWeight: "600" }}>
+                Cinsiyet Seçiniz..
+              </Text>
+              <View
+                style={{
+                  flexDirection: "row",
+                  flex: 1,
+                  alignItems: "center",
+                }}
+              >
+                <Pressable
+                  onPress={() => {
+                    setModalVisible(false);
+                    seatSelect("woman");
+                  }}
+                >
+                  <MaterialCommunityIcons
+                    style={{ margin: 10 }}
+                    name="face-woman"
+                    size={50}
+                    color="#863A6F"
+                  />
+                </Pressable>
+                <Pressable
+                  onPress={() => {
+                    setModalVisible(false);
+                    seatSelect("man");
+                  }}
+                >
+                  <MaterialCommunityIcons
+                    style={{ margin: 10 }}
+                    name="face-man"
+                    size={50}
+                    color="#3A8891"
+                  />
+                </Pressable>
+              </View>
+            </View>
+          </View>
+        </Modal>
       </View>
       <Pressable onPress={() => console.warn("tık")} style={styles.button}>
         <Text style={styles.buttonText}>Tamamla</Text>
