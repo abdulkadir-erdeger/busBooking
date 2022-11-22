@@ -364,6 +364,7 @@ exports[`render correctly 1`] = `
         "padding": 10,
       }
     }
+    testID="buttonNavigate"
   >
     <Text
       style={

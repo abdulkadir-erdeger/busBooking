@@ -168,7 +168,11 @@ const HomeScreen = () => {
         />
       )}
 
-      <Pressable onPress={() => navigateToDetail()} style={styles.button}>
+      <Pressable
+        testID="buttonNavigate"
+        onPress={() => navigateToDetail()}
+        style={styles.button}
+      >
         <Text style={styles.buttonText}>Seferleri Göster</Text>
       </Pressable>
     </View>

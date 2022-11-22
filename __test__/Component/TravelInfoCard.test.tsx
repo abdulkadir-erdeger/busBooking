@@ -1,16 +1,15 @@
 import React from "react";
-import { render } from "@testing-library/react-native";
+import { render, fireEvent, screen } from "@testing-library/react-native";
 import TravelInfoCard from "../../src/component/TravelInfoCard";
 
-const mockedDispatch = jest.fn();
+const mockedNavigate = jest.fn();
 
 jest.mock("@react-navigation/native", () => {
   const actualNav = jest.requireActual("@react-navigation/native");
   return {
     ...actualNav,
     useNavigation: () => ({
-      navigate: jest.fn(),
-      dispatch: mockedDispatch,
+      navigate: mockedNavigate,
     }),
   };
 });
@@ -59,4 +58,11 @@ test("should render fiyat data correctly", () => {
     text += item;
   }
   expect(text).toBe(fiyat);
+});
+
+test("uses useNavigation when pressed", async () => {
+  const { getAllByTestId } = render(<TravelInfoCard x={testData} />);
+  const button = getAllByTestId("buttonNavigate");
+  await fireEvent.press(button[0]);
+  expect(mockedNavigate).toHaveBeenCalledWith("SeatSection");
 });

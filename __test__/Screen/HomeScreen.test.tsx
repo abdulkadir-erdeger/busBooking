@@ -1,16 +1,15 @@
 import React from "react";
-import { render, screen } from "@testing-library/react-native";
+import { render, screen, fireEvent } from "@testing-library/react-native";
 import HomeScreen from "../../src/screen/HomeScreen";
 
-const mockedDispatch = jest.fn();
+const mockedNavigate = jest.fn();
 
 jest.mock("@react-navigation/native", () => {
   const actualNav = jest.requireActual("@react-navigation/native");
   return {
     ...actualNav,
     useNavigation: () => ({
-      navigate: jest.fn(),
-      dispatch: mockedDispatch,
+      navigate: mockedNavigate,
     }),
   };
 });
@@ -18,4 +17,20 @@ jest.mock("@react-navigation/native", () => {
 test("render correctly", () => {
   render(<HomeScreen />);
   expect(screen.toJSON()).toMatchSnapshot();
+});
+
+test("uses useNavigation when pressed", async () => {
+  const { getAllByTestId } = render(<HomeScreen />);
+  const button = getAllByTestId("buttonNavigate");
+  const route = {
+    ay: "Kasım",
+    biletTürü: "tekYon",
+    gun: 22,
+    haftaninGunu: "Salı",
+    kalkıs: "istanbul",
+    varis: "ankara",
+    yasDurum: "yetiskin",
+  };
+  await fireEvent.press(button[0]);
+  expect(mockedNavigate).toHaveBeenCalledWith("Expedition", route);
 });

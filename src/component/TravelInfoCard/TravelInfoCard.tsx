@@ -68,6 +68,7 @@ const TravelInfoCard: React.FC<Props> = ({ x }) => {
             </View>
           </View>
           <TouchableOpacity
+            testID="buttonNavigate"
             onPress={() => navigation.navigate("SeatSection")}
             style={styles.buttonContainer}
           >
