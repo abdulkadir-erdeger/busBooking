@@ -23,13 +23,13 @@ const TravelInfoCard: React.FC<Props> = ({ x }) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <View>
-          <Text>{x.kalkisSaati}</Text>
-          <Text>{x.inisSaati}</Text>
+          <Text testID="kalkisSaati">{x.kalkisSaati}</Text>
+          <Text testID="inisSaati">{x.inisSaati}</Text>
         </View>
         <Entypo name="dots-two-vertical" size={30} color="black" />
         <View>
-          <Text>{x.kalkisYeri}</Text>
-          <Text>{x.inisYeri}</Text>
+          <Text testID="kalkisYeri">{x.kalkisYeri}</Text>
+          <Text testID="inisYeri">{x.inisYeri}</Text>
         </View>
       </View>
       <View style={styles.divider} />
@@ -71,7 +71,9 @@ const TravelInfoCard: React.FC<Props> = ({ x }) => {
             onPress={() => navigation.navigate("SeatSection")}
             style={styles.buttonContainer}
           >
-            <Text style={styles.buttonText}>₺ {x.fiyat},00</Text>
+            <Text testID="fiyat" style={styles.buttonText}>
+              ₺ {x.fiyat}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

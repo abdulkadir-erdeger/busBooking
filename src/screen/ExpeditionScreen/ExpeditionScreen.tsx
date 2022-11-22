@@ -18,7 +18,7 @@ const ExpeditionScreen = () => {
       kalkisYeri: "Istanbul/Ümraniye Dudulu",
       inisYeri: "Ankara/Otogarı",
       seferBilgileri: "5:45",
-      fiyat: 110,
+      fiyat: "110,00",
       ozellikler: "",
     },
     {
@@ -28,7 +28,7 @@ const ExpeditionScreen = () => {
       kalkisYeri: "Istanbul/Esenler Otogarı",
       inisYeri: "Ankara/Otogarı",
       seferBilgileri: "7:00",
-      fiyat: 110,
+      fiyat: "110,00",
       ozellikler: "",
     },
   ];

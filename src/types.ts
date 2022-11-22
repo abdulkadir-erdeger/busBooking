@@ -33,6 +33,6 @@ export type travelInfo = {
   kalkisYeri: string;
   inisYeri: string;
   seferBilgileri: string;
-  fiyat: number;
+  fiyat: string;
   ozellikler: string;
 };
