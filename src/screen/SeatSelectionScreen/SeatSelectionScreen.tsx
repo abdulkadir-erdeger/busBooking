@@ -131,7 +131,7 @@ const SeatSelectionScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flex: 1, alignItems: "center" }}>
-        <View style={{ marginVertical: 10 }}>
+        <View style={{ marginVertical: 10, marginHorizontal: 8 }}>
           <Text style={{ justifyContent: "center" }}>
             <MaterialIcons name="info" size={20} color="#66BFBF" />
             Çiftli koltuklar ailelere ayrılmıştır. Yanınıza yabancı bir yolcunun

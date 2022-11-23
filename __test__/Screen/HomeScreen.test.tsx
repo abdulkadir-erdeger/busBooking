@@ -19,18 +19,19 @@ test("render correctly", () => {
   expect(screen.toJSON()).toMatchSnapshot();
 });
 
+const route = {
+  ay: "Kasım",
+  biletTürü: "tekYon",
+  gun: 23,
+  haftaninGunu: "Çarşamba",
+  kalkıs: "istanbul",
+  varis: "ankara",
+  yasDurum: "yetiskin",
+};
+
 test("uses useNavigation when pressed", async () => {
   const { getAllByTestId } = render(<HomeScreen />);
   const button = getAllByTestId("buttonNavigate");
-  const route = {
-    ay: "Kasım",
-    biletTürü: "tekYon",
-    gun: 22,
-    haftaninGunu: "Salı",
-    kalkıs: "istanbul",
-    varis: "ankara",
-    yasDurum: "yetiskin",
-  };
   await fireEvent.press(button[0]);
   expect(mockedNavigate).toHaveBeenCalledWith("Expedition", route);
 });

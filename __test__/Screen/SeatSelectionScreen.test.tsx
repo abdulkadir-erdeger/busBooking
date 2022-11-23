@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react-native";
+import { render, screen, fireEvent } from "@testing-library/react-native";
 import SeatSelectionScreen from "../../src/screen/SeatSelectionScreen";
 
 test("render correctly", () => {

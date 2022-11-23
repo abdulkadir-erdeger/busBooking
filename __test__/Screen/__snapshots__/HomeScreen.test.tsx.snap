@@ -284,7 +284,7 @@ exports[`render correctly 1`] = `
       >
         <Text />
         <Text>
-          22.11.2022
+          23.11.2022
         </Text>
       </View>
     </View>
