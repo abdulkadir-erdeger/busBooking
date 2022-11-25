@@ -12,7 +12,7 @@ import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import axios from "axios";
 
 const SeatSelectionScreen = () => {
-  const [row, setRow] = useState<any>("");
+  const [row, setRow] = useState<any>([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectItem, setSelectItem] = useState<any>("");
   const [selectSource, setSelectSource] = useState<any>("");
@@ -91,7 +91,7 @@ const SeatSelectionScreen = () => {
 
   const seatSelect = (x: string) => {
     if (selectSource) {
-      let data = row[0][selectSource];
+      let data = row[selectSource];
       const i = data.findIndex((item: any) => {
         return item.id === selectItem.id;
       });
@@ -103,7 +103,9 @@ const SeatSelectionScreen = () => {
         data[i].gender = x;
         data[i].selected = false;
       }
-      setRow((oldArray: any) => [...oldArray, data]);
+      let newData = { ...row, data };
+      setRow(newData);
+      //setRow((oldArray: any) => [...oldArray, data]);
     }
   };
 

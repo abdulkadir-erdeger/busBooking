@@ -7,6 +7,20 @@ Project Application Screens:
 
 In this project, a the bus booking application was created.
 
+## NodeJS Express Server
+
+To start express server, first go to the backend folder.
+
+```sh
+$ cd backend
+```
+
+Run Server.
+
+```sh
+$ npm start
+```
+
 ## Running the Application
 
 To run the application, run the code below and select the operating system you want.
