@@ -3,35 +3,22 @@ import { useRoute } from "@react-navigation/native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import styles from "./ExpeditionScreen.styles";
 import TravelInfoCard from "../../component/TravelInfoCard";
+import axios from "axios";
 import { ProfileScreenRouteProp } from "../../types";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const ExpeditionScreen = () => {
   const route = useRoute<ProfileScreenRouteProp>();
   const data: any = route?.params;
+  const [travelData, setTravelData] = useState();
 
-  const traveldata = [
-    {
-      id: 1,
-      kalkisSaati: "7:15",
-      inisSaati: "13:00",
-      kalkisYeri: "Istanbul/Ümraniye Dudulu",
-      inisYeri: "Ankara/Otogarı",
-      seferBilgileri: "5:45",
-      fiyat: "110,00",
-      ozellikler: "",
-    },
-    {
-      id: 1,
-      kalkisSaati: "8:00",
-      inisSaati: "15:00",
-      kalkisYeri: "Istanbul/Esenler Otogarı",
-      inisYeri: "Ankara/Otogarı",
-      seferBilgileri: "7:00",
-      fiyat: "110,00",
-      ozellikler: "",
-    },
-  ];
+  useEffect(() => {
+    axios
+      .get("http://10.0.2.2:5000/travelData/")
+      .then((res) => setTravelData(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.travelInfoCard}>
@@ -53,7 +40,7 @@ const ExpeditionScreen = () => {
         </View>
       </View>
       <FlatList
-        data={traveldata}
+        data={travelData}
         renderItem={({ item }) => <TravelInfoCard x={item} />}
         keyExtractor={(_, index) => index.toString()}
       />

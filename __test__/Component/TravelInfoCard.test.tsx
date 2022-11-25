@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent, screen } from "@testing-library/react-native";
+import { render, fireEvent } from "@testing-library/react-native";
 import TravelInfoCard from "../../src/component/TravelInfoCard";
 
 const mockedNavigate = jest.fn();

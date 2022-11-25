@@ -1,0 +1,436 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "backgroundColor": "#f9a825",
+        "padding": 15,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "marginRight": 5,
+          }
+        }
+      />
+      <Text />
+      <Text
+        style={
+          {
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "marginRight": 5,
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Text>
+        , 
+      </Text>
+      <Text>
+         
+      </Text>
+      <Text>
+         
+      </Text>
+      <Text
+        style={
+          {
+            "textTransform": "capitalize",
+          }
+        }
+      />
+    </View>
+  </View>
+  <RCTScrollView
+    data={
+      [
+        {
+          "fiyat": "110,00",
+          "id": 1,
+          "inisSaati": "13:00",
+          "inisYeri": "Ankara/Otogarı",
+          "kalkisSaati": "7:15",
+          "kalkisYeri": "Istanbul/Ümraniye Dudulu",
+          "ozellikler": "",
+          "seferBilgileri": "5:45",
+        },
+        {
+          "fiyat": "110,00",
+          "id": 1,
+          "inisSaati": "15:00",
+          "inisYeri": "Ankara/Otogarı",
+          "kalkisSaati": "8:00",
+          "kalkisYeri": "Istanbul/Esenler Otogarı",
+          "ozellikler": "",
+          "seferBilgileri": "7:00",
+        },
+      ]
+    }
+    getItem={[Function]}
+    getItemCount={[Function]}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={[]}
+    viewabilityConfigCallbackPairs={[]}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            {
+              "borderRadius": 10,
+              "borderWidth": 1,
+              "flex": 1,
+              "margin": 10,
+              "padding": 10,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View>
+              <Text
+                testID="kalkisSaati"
+              >
+                7:15
+              </Text>
+              <Text
+                testID="inisSaati"
+              >
+                13:00
+              </Text>
+            </View>
+            <Text />
+            <View>
+              <Text
+                testID="kalkisYeri"
+              >
+                Istanbul/Ümraniye Dudulu
+              </Text>
+              <Text
+                testID="inisYeri"
+              >
+                Ankara/Otogarı
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "backgroundColor": "lightgrey",
+                "height": 2,
+                "marginVertical": 10,
+              }
+            }
+          />
+          <View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "flex": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <Text />
+                  <Text
+                    style={
+                      {
+                        "marginLeft": 5,
+                      }
+                    }
+                  >
+                    Sefer Bilgileri | 
+                    5:45
+                     saat
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "flexDirection": "row",
+                      "paddingVertical": 5,
+                    }
+                  }
+                >
+                  <Text />
+                  <Text />
+                  <Text />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "lightgrey",
+                        "marginHorizontal": 3,
+                        "width": 1,
+                      }
+                    }
+                  />
+                  <Text />
+                  <Text />
+                  <Text />
+                </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "backgroundColor": "#1C3879",
+                    "borderRadius": 16,
+                    "opacity": 1,
+                    "padding": 10,
+                    "paddingHorizontal": 30,
+                  }
+                }
+                testID="buttonNavigate"
+              >
+                <Text
+                  style={
+                    {
+                      "color": "white",
+                      "fontSize": 18,
+                    }
+                  }
+                  testID="fiyat"
+                >
+                  ₺ 
+                  110,00
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            {
+              "borderRadius": 10,
+              "borderWidth": 1,
+              "flex": 1,
+              "margin": 10,
+              "padding": 10,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View>
+              <Text
+                testID="kalkisSaati"
+              >
+                8:00
+              </Text>
+              <Text
+                testID="inisSaati"
+              >
+                15:00
+              </Text>
+            </View>
+            <Text />
+            <View>
+              <Text
+                testID="kalkisYeri"
+              >
+                Istanbul/Esenler Otogarı
+              </Text>
+              <Text
+                testID="inisYeri"
+              >
+                Ankara/Otogarı
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "backgroundColor": "lightgrey",
+                "height": 2,
+                "marginVertical": 10,
+              }
+            }
+          />
+          <View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "flex": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <Text />
+                  <Text
+                    style={
+                      {
+                        "marginLeft": 5,
+                      }
+                    }
+                  >
+                    Sefer Bilgileri | 
+                    7:00
+                     saat
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "flexDirection": "row",
+                      "paddingVertical": 5,
+                    }
+                  }
+                >
+                  <Text />
+                  <Text />
+                  <Text />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "lightgrey",
+                        "marginHorizontal": 3,
+                        "width": 1,
+                      }
+                    }
+                  />
+                  <Text />
+                  <Text />
+                  <Text />
+                </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "backgroundColor": "#1C3879",
+                    "borderRadius": 16,
+                    "opacity": 1,
+                    "padding": 10,
+                    "paddingHorizontal": 30,
+                  }
+                }
+                testID="buttonNavigate"
+              >
+                <Text
+                  style={
+                    {
+                      "color": "white",
+                      "fontSize": 18,
+                    }
+                  }
+                  testID="fiyat"
+                >
+                  ₺ 
+                  110,00
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

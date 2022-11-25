@@ -3,14 +3,14 @@
 exports[`render correctly 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
 >
   <View
     style={
-      Object {
+      {
         "margin": 2,
       }
     }
@@ -18,7 +18,7 @@ exports[`render correctly 1`] = `
     <Image
       source={1}
       style={
-        Object {
+        {
           "height": 250,
           "width": "100%",
         }
@@ -26,7 +26,7 @@ exports[`render correctly 1`] = `
     />
     <Text
       style={
-        Object {
+        {
           "backgroundColor": "black",
           "borderTopLeftRadius": 10,
           "borderTopRightRadius": 10,
@@ -46,7 +46,7 @@ exports[`render correctly 1`] = `
   </View>
   <View
     style={
-      Object {
+      {
         "flex": 1,
         "padding": 5,
       }
@@ -54,7 +54,7 @@ exports[`render correctly 1`] = `
   >
     <View
       style={
-        Object {
+        {
           "alignItems": "center",
           "flexDirection": "row",
         }
@@ -64,7 +64,7 @@ exports[`render correctly 1`] = `
         accessibilityLiveRegion="polite"
         accessibilityRole="radio"
         accessibilityState={
-          Object {
+          {
             "checked": true,
             "disabled": false,
           }
@@ -79,11 +79,11 @@ exports[`render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {
+          [
+            {
               "overflow": "hidden",
             },
-            Object {
+            {
               "borderRadius": 18,
               "padding": 6,
             },
@@ -92,7 +92,7 @@ exports[`render correctly 1`] = `
       >
         <View
           style={
-            Object {
+            {
               "opacity": 1,
             }
           }
@@ -107,7 +107,7 @@ exports[`render correctly 1`] = `
         accessibilityLiveRegion="polite"
         accessibilityRole="radio"
         accessibilityState={
-          Object {
+          {
             "checked": false,
             "disabled": false,
           }
@@ -122,11 +122,11 @@ exports[`render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {
+          [
+            {
               "overflow": "hidden",
             },
-            Object {
+            {
               "borderRadius": 18,
               "padding": 6,
             },
@@ -135,7 +135,7 @@ exports[`render correctly 1`] = `
       >
         <View
           style={
-            Object {
+            {
               "opacity": 0,
             }
           }
@@ -149,7 +149,7 @@ exports[`render correctly 1`] = `
     </View>
     <View
       style={
-        Object {
+        {
           "alignItems": "center",
           "borderRadius": 10,
           "borderWidth": 1,
@@ -164,21 +164,21 @@ exports[`render correctly 1`] = `
       <Text />
       <View
         style={
-          Object {
+          {
             "flex": 1,
           }
         }
       >
         <RNCPicker
           items={
-            Array [
-              Object {
+            [
+              {
                 "label": "İstanbul",
                 "testID": undefined,
                 "textColor": undefined,
                 "value": "istanbul",
               },
-              Object {
+              {
                 "label": "Ankara",
                 "testID": undefined,
                 "textColor": undefined,
@@ -190,8 +190,8 @@ exports[`render correctly 1`] = `
           onChange={[Function]}
           selectedIndex={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 216,
               },
               undefined,
@@ -202,7 +202,7 @@ exports[`render correctly 1`] = `
     </View>
     <View
       style={
-        Object {
+        {
           "alignItems": "center",
           "borderRadius": 10,
           "borderWidth": 1,
@@ -217,21 +217,21 @@ exports[`render correctly 1`] = `
       <Text />
       <View
         style={
-          Object {
+          {
             "flex": 1,
           }
         }
       >
         <RNCPicker
           items={
-            Array [
-              Object {
+            [
+              {
                 "label": "Ankara",
                 "testID": undefined,
                 "textColor": undefined,
                 "value": "ankara",
               },
-              Object {
+              {
                 "label": "İstanbul",
                 "testID": undefined,
                 "textColor": undefined,
@@ -243,8 +243,8 @@ exports[`render correctly 1`] = `
           onChange={[Function]}
           selectedIndex={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 216,
               },
               undefined,
@@ -269,7 +269,7 @@ exports[`render correctly 1`] = `
     >
       <View
         style={
-          Object {
+          {
             "alignItems": "center",
             "borderRadius": 10,
             "borderWidth": 1,
@@ -284,13 +284,13 @@ exports[`render correctly 1`] = `
       >
         <Text />
         <Text>
-          23.11.2022
+          24.11.2022
         </Text>
       </View>
     </View>
     <View
       style={
-        Object {
+        {
           "alignItems": "center",
           "borderRadius": 10,
           "borderWidth": 1,
@@ -304,21 +304,21 @@ exports[`render correctly 1`] = `
     >
       <View
         style={
-          Object {
+          {
             "flex": 1,
           }
         }
       >
         <RNCPicker
           items={
-            Array [
-              Object {
+            [
+              {
                 "label": "Yetişkin",
                 "testID": undefined,
                 "textColor": undefined,
                 "value": "yetiskin",
               },
-              Object {
+              {
                 "label": "Çocuk",
                 "testID": undefined,
                 "textColor": undefined,
@@ -330,8 +330,8 @@ exports[`render correctly 1`] = `
           onChange={[Function]}
           selectedIndex={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 216,
               },
               undefined,
@@ -355,7 +355,7 @@ exports[`render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "alignItems": "center",
         "backgroundColor": "#f9a825",
         "borderRadius": 15,
@@ -368,7 +368,7 @@ exports[`render correctly 1`] = `
   >
     <Text
       style={
-        Object {
+        {
           "color": "white",
           "fontSize": 18,
           "fontWeight": "bold",

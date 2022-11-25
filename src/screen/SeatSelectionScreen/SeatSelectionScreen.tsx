@@ -6,45 +6,24 @@ import {
   Pressable,
   Modal,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./SeatSelectionScreen.style";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
-
-const data = [
-  {
-    row1: [
-      { id: "1", empty: true, selected: false, gender: "" },
-      { id: "4", empty: false, selected: true, gender: "woman" },
-      { id: "7", empty: true, selected: false, gender: "" },
-      { id: "10", empty: true, selected: false, gender: "" },
-      { id: "13", empty: true, selected: false, gender: "" },
-      { id: "16", empty: true, selected: false, gender: "" },
-      { id: "19", empty: true, selected: false, gender: "" },
-    ],
-    row2: [
-      { id: "2", empty: false, selected: true, gender: "man" },
-      { id: "3", empty: false, selected: true, gender: "woman" },
-      { id: "5", empty: true, selected: false, gender: "" },
-      { id: "6", empty: true, selected: false, gender: "" },
-      { id: "8", empty: true, selected: false, gender: "" },
-      { id: "9", empty: true, selected: false, gender: "" },
-      { id: "11", empty: true, selected: false, gender: "" },
-      { id: "12", empty: false, selected: true, gender: "man" },
-      { id: "14", empty: true, selected: false, gender: "" },
-      { id: "15", empty: true, selected: false, gender: "" },
-      { id: "17", empty: true, selected: false, gender: "" },
-      { id: "18", empty: true, selected: false, gender: "" },
-      { id: "20", empty: true, selected: false, gender: "" },
-      { id: "21", empty: true, selected: false, gender: "" },
-    ],
-  },
-];
+import axios from "axios";
 
 const SeatSelectionScreen = () => {
-  const [row, setRow] = useState<any>(data);
+  const [row, setRow] = useState<any>("");
   const [modalVisible, setModalVisible] = useState(false);
   const [selectItem, setSelectItem] = useState<any>("");
   const [selectSource, setSelectSource] = useState<any>("");
+
+  useEffect(() => {
+    axios
+      .get("http://10.0.2.2:5000/travelData/1")
+      .then((res) => setRow(res.data.koltuklar))
+      .catch((err) => console.log(err));
+  }, []);
+
   const Seat = ({ item, source }: any) => {
     return (
       <TouchableOpacity
@@ -153,23 +132,31 @@ const SeatSelectionScreen = () => {
               flexDirection: "row",
             }}
           >
-            <FlatList
-              data={row[0].row1}
-              renderItem={({ item }) => <Seat source={"row1"} item={item} />}
-              keyExtractor={(item) => item.id}
-              scrollEnabled={false}
-              numColumns={1}
-              style={{ width: 0 }}
-            />
-            <View style={{ flex: 1 }} />
-            <FlatList
-              data={row[0].row2}
-              renderItem={({ item }) => <Seat source={"row2"} item={item} />}
-              keyExtractor={(item) => item.id}
-              numColumns={2}
-              scrollEnabled={false}
-              style={{ width: 60 }}
-            />
+            {row && (
+              <>
+                <FlatList
+                  data={row.row1}
+                  renderItem={({ item }) => (
+                    <Seat source={"row1"} item={item} />
+                  )}
+                  keyExtractor={(item) => item.id}
+                  scrollEnabled={false}
+                  numColumns={1}
+                  style={{ width: 0 }}
+                />
+                <View style={{ flex: 1 }} />
+                <FlatList
+                  data={row.row2}
+                  renderItem={({ item }) => (
+                    <Seat source={"row2"} item={item} />
+                  )}
+                  keyExtractor={(item) => item.id}
+                  numColumns={2}
+                  scrollEnabled={false}
+                  style={{ width: 60 }}
+                />
+              </>
+            )}
           </View>
         </View>
         <Modal

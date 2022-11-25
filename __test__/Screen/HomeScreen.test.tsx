@@ -22,8 +22,8 @@ test("render correctly", () => {
 const route = {
   ay: "Kasım",
   biletTürü: "tekYon",
-  gun: 23,
-  haftaninGunu: "Çarşamba",
+  gun: 24,
+  haftaninGunu: "Perşembe",
   kalkıs: "istanbul",
   varis: "ankara",
   yasDurum: "yetiskin",
