@@ -13,6 +13,7 @@ To start express server, first go to the backend folder.
 
 ```sh
 $ cd backend
+$ npm install
 ```
 
 Run Server.
@@ -27,6 +28,7 @@ To start Stripe server, first go to the server folder.
 
 ```sh
 $ cd server
+$ npm install
 ```
 
 Run Server.
