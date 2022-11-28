@@ -5,17 +5,23 @@ import {
   TouchableOpacity,
   Pressable,
   Modal,
+  Alert,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import styles from "./SeatSelectionScreen.style";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import axios from "axios";
 
+import { StripeProvider, usePaymentSheet } from "@stripe/stripe-react-native";
+
 const SeatSelectionScreen = () => {
   const [row, setRow] = useState<any>([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectItem, setSelectItem] = useState<any>("");
   const [selectSource, setSelectSource] = useState<any>("");
+  const { initPaymentSheet, presentPaymentSheet, loading } = usePaymentSheet();
+  const [ready, setReady] = useState(false);
+  const API_URL = "http://10.0.2.2:4242";
 
   useEffect(() => {
     axios
@@ -24,6 +30,16 @@ const SeatSelectionScreen = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const openPaymentSheet = async () => {
+    const { error } = await presentPaymentSheet();
+
+    if (error) {
+      Alert.alert(`Hata: ${error.code}`, error.message);
+    } else {
+      Alert.alert("Başarılı", "Ödeme başarılı bir şekilde onaylandı.");
+      setReady(false);
+    }
+  };
   const Seat = ({ item, source }: any) => {
     return (
       <TouchableOpacity
@@ -107,6 +123,69 @@ const SeatSelectionScreen = () => {
       setRow(newData);
       //setRow((oldArray: any) => [...oldArray, data]);
     }
+  };
+
+  useEffect(() => {
+    initialisePaymentSheet();
+  }, []);
+
+  const initialisePaymentSheet = async () => {
+    const { paymentIntent, ephemeralKey, customer } =
+      await fetchPaymentSheetParams();
+
+    const { error } = await initPaymentSheet({
+      appearance: {
+        colors: {
+          primary: "#f9a825",
+          background: "#282c34",
+          componentBackground: "#ffffff",
+          componentDivider: "#282c34",
+          primaryText: "#ffffff",
+          secondaryText: "#f9a825",
+          componentText: "#282c34",
+          icon: "#f9a825",
+          placeholderText: "#282c34",
+        },
+        shapes: {
+          borderRadius: 25,
+        },
+      },
+      customerId: customer,
+      customerEphemeralKeySecret: ephemeralKey,
+      paymentIntentClientSecret: paymentIntent,
+      merchantDisplayName: "Example Inc.",
+      applePay: {
+        merchantCountryCode: "TR",
+      },
+      googlePay: {
+        merchantCountryCode: "TR",
+        testEnv: true,
+        currencyCode: "try",
+      },
+      allowsDelayedPaymentMethods: true,
+      returnURL: "stripe-example://stripe-redirect",
+    });
+    if (error) {
+      Alert.alert(`Error code: ${error.code}`, error.message);
+    } else {
+      setReady(true);
+    }
+  };
+
+  const fetchPaymentSheetParams = async () => {
+    const response = await fetch(`${API_URL}/payment-sheet`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const { paymentIntent, ephemeralKey, customer } = await response.json();
+
+    return {
+      paymentIntent,
+      ephemeralKey,
+      customer,
+    };
   };
 
   return (
@@ -229,7 +308,7 @@ const SeatSelectionScreen = () => {
           </View>
         </Modal>
       </View>
-      <Pressable onPress={() => console.warn("tık")} style={styles.button}>
+      <Pressable onPress={() => openPaymentSheet()} style={styles.button}>
         <Text style={styles.buttonText}>Tamamla</Text>
       </Pressable>
     </View>

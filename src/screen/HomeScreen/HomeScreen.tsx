@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StatusBar, Image, Pressable } from "react-native";
+import { View, Text, StatusBar, Image, Pressable, LogBox } from "react-native";
 import { RadioButton } from "react-native-paper";
 import { Picker } from "@react-native-picker/picker";
 import DateTimePicker, {
@@ -10,6 +10,9 @@ import { useNavigation } from "@react-navigation/native";
 import styles from "./HomeScreen.style";
 import { RootStackParamList } from "../../types";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+
+LogBox.ignoreLogs(["new NativeEventEmitter"]);
+LogBox.ignoreAllLogs();
 
 const HomeScreen = () => {
   const navigation =

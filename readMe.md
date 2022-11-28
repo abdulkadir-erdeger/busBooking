@@ -21,6 +21,20 @@ Run Server.
 $ npm start
 ```
 
+## Stripe Server
+
+To start Stripe server, first go to the server folder.
+
+```sh
+$ cd server
+```
+
+Run Server.
+
+```sh
+$ npm start
+```
+
 ## Running the Application
 
 To run the application, run the code below and select the operating system you want.
