@@ -12,11 +12,15 @@ import styles from "./SeatSelectionScreen.style";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import axios from "axios";
 import { ProfileScreenRouteProp2 } from "../../types";
-import { useRoute } from "@react-navigation/native";
+import { useRoute, useNavigation } from "@react-navigation/native";
 import { usePaymentSheet } from "@stripe/stripe-react-native";
+import { RootStackParamList } from "../../types";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 const SeatSelectionScreen = () => {
   const route = useRoute<ProfileScreenRouteProp2>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [row, setRow] = useState<any>([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectItem, setSelectItem] = useState<any>("");
@@ -43,8 +47,7 @@ const SeatSelectionScreen = () => {
         gender: selectGender,
       })
       .then(function (response) {
-        Alert.alert("Başarılı", "Ödeme başarılı bir şekilde onaylandı.");
-        setReady(false);
+        console.log(response);
       })
       .catch(function (error) {
         console.log(error);
@@ -58,6 +61,14 @@ const SeatSelectionScreen = () => {
       Alert.alert(`Hata: ${error.code}`, error.message);
     } else {
       buyPost();
+      Alert.alert("Başarılı", "Ödeme başarılı bir şekilde onaylandı.", [
+        {
+          text: "Tamam",
+          onPress: () => navigation.navigate("Home"),
+          style: "destructive",
+        },
+      ]);
+      setReady(false);
     }
   };
   const Seat = ({ item, source }: any) => {

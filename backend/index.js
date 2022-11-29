@@ -29,13 +29,16 @@ server.get("/travelData/:id/", (req, res) => {
 
 server.post("/buy", (req, res) => {
   const { otobusId, koltukNo, row, gender } = req.body;
-  const data = travelData.find((travel) => travel.id === parseInt(otobusId));
-  const seatData = data.koltuklar[row].find((seat) => seat.id === koltukNo);
-  seatData.empty = false;
-  seatData.selected = true;
-  seatData.gender = gender;
-  //travelData = { ...travelData, seatData };
-  //console.log(travelData);
+  const newData = travelData;
+  const dataIndex = travelData.findIndex(
+    (travel) => travel.id === parseInt(otobusId)
+  );
+  const seatDataIndex = travelData[dataIndex].koltuklar[row].findIndex(
+    (seat) => seat.id === koltukNo
+  );
+  travelData[dataIndex].koltuklar[row][seatDataIndex].empty = false;
+  travelData[dataIndex].koltuklar[row][seatDataIndex].selected = true;
+  travelData[dataIndex].koltuklar[row][seatDataIndex].gender = gender;
 });
 
 server.listen(process.env.PORT || 5000, () => {
