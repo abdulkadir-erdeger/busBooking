@@ -48,11 +48,11 @@ export default [
     koltuklar: {
       row1: [
         { id: "1", empty: true, selected: false, gender: "" },
-        { id: "4", empty: false, selected: true, gender: "woman" },
+        { id: "4", empty: true, selected: false, gender: "" },
         { id: "7", empty: true, selected: false, gender: "" },
         { id: "10", empty: true, selected: false, gender: "" },
         { id: "13", empty: true, selected: false, gender: "" },
-        { id: "16", empty: true, selected: false, gender: "" },
+        { id: "16", empty: false, selected: true, gender: "woman" },
         { id: "19", empty: true, selected: false, gender: "" },
       ],
       row2: [

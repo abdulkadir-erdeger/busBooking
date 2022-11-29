@@ -11,24 +11,45 @@ import React, { useState, useEffect } from "react";
 import styles from "./SeatSelectionScreen.style";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import axios from "axios";
-
-import { StripeProvider, usePaymentSheet } from "@stripe/stripe-react-native";
+import { ProfileScreenRouteProp2 } from "../../types";
+import { useRoute } from "@react-navigation/native";
+import { usePaymentSheet } from "@stripe/stripe-react-native";
 
 const SeatSelectionScreen = () => {
+  const route = useRoute<ProfileScreenRouteProp2>();
   const [row, setRow] = useState<any>([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectItem, setSelectItem] = useState<any>("");
   const [selectSource, setSelectSource] = useState<any>("");
+  const [selectGender, setSelectGender] = useState<any>("");
   const { initPaymentSheet, presentPaymentSheet, loading } = usePaymentSheet();
   const [ready, setReady] = useState(false);
+  const id = route.params.id;
   const API_URL = "http://10.0.2.2:4242";
 
   useEffect(() => {
     axios
-      .get("http://10.0.2.2:5000/travelData/1")
+      .get(`http://10.0.2.2:5000/travelData/${id}`)
       .then((res) => setRow(res.data.koltuklar))
       .catch((err) => console.log(err));
   }, []);
+
+  const buyPost = async () => {
+    axios
+      .post("http://10.0.2.2:5000/buy", {
+        otobusId: id,
+        koltukNo: selectItem.id,
+        row: selectSource,
+        gender: selectGender,
+      })
+      .then(function (response) {
+        Alert.alert("Başarılı", "Ödeme başarılı bir şekilde onaylandı.");
+        setReady(false);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   const openPaymentSheet = async () => {
     const { error } = await presentPaymentSheet();
@@ -36,8 +57,7 @@ const SeatSelectionScreen = () => {
     if (error) {
       Alert.alert(`Hata: ${error.code}`, error.message);
     } else {
-      Alert.alert("Başarılı", "Ödeme başarılı bir şekilde onaylandı.");
-      setReady(false);
+      buyPost();
     }
   };
   const Seat = ({ item, source }: any) => {
@@ -106,6 +126,7 @@ const SeatSelectionScreen = () => {
   };
 
   const seatSelect = (x: string) => {
+    setSelectGender(x);
     if (selectSource) {
       let data = row[selectSource];
       const i = data.findIndex((item: any) => {

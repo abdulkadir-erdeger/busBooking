@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node --experimental-specifier-resolution=node index.js",
+    "start": "nodemon --experimental-specifier-resolution=node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "netlify-lambda": "^2.0.15",
+    "nodemon": "^2.0.20",
     "serverless-http": "^3.1.0"
   }
 }

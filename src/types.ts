@@ -6,7 +6,7 @@ import {
 export type RootStackParamList = {
   Home: undefined;
   Expedition: Info;
-  SeatSection: undefined;
+  SeatSection: travelID;
 };
 export type homeScreenProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -15,6 +15,9 @@ export type homeScreenProp = NativeStackNavigationProp<
 
 type Props = NativeStackScreenProps<RootStackParamList, "Expedition">;
 export type ProfileScreenRouteProp = Props["route"];
+
+type Props2 = NativeStackScreenProps<RootStackParamList, "SeatSection">;
+export type ProfileScreenRouteProp2 = Props2["route"];
 
 export type Info = {
   biletTürü?: string;
@@ -35,4 +38,8 @@ export type travelInfo = {
   seferBilgileri: string;
   fiyat: string;
   ozellikler: string;
+};
+
+export type travelID = {
+  id: number;
 };

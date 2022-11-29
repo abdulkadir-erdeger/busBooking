@@ -27,6 +27,17 @@ server.get("/travelData/:id/", (req, res) => {
   }
 });
 
+server.post("/buy", (req, res) => {
+  const { otobusId, koltukNo, row, gender } = req.body;
+  const data = travelData.find((travel) => travel.id === parseInt(otobusId));
+  const seatData = data.koltuklar[row].find((seat) => seat.id === koltukNo);
+  seatData.empty = false;
+  seatData.selected = true;
+  seatData.gender = gender;
+  //travelData = { ...travelData, seatData };
+  //console.log(travelData);
+});
+
 server.listen(process.env.PORT || 5000, () => {
   console.log("Server dinleniyor..");
 });
